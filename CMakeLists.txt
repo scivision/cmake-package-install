@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 
 project(install_demo
 LANGUAGES C Fortran
+VERSION 1.0.0
 )
 
 # --- auto-ignore build directory
@@ -30,7 +31,7 @@ Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include
 )
 
 install(TARGETS c_demo fortran_demo
-ARCHIVE LIBRARY PUBLIC_HEADER
+EXPORT ${PROJECT_NAME}-targets
 )
 # installs under CMAKE_INSTALL_PREFIX:
 # lib/lib_cdemo.a include/c_demo.h
@@ -41,3 +42,5 @@ TYPE INCLUDE
 )
 # installs under CMAKE_INSTALL_PREFIX:
 # include/f_demo.mod
+
+include(cmake/install.cmake)
